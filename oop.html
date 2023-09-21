@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let car = {
+        model: 2010,
+        carName: "bmw",
+        PrintCarDetails: function () {
+          return this.model + " " + this.carName;
+        },
+      };
+
+      console.log(car.PrintCarDetails());
+
+
+      function Person (name , age){
+        let newObj = {};
+        newObj.name = "ahmed";
+        newObj.age = 28;
+        newObj.desc = "hello"
+        delete newObj.name
+        return newObj;
+      }
+      
+      let per1 = Person()
+      per1 = Object.keys(per1)
+      per1.push("alal")
+      console.log(per1)
+
+
+      function client (name){
+        this.name = name;
+        this.details = () => {
+            console.log(`client name is ${name}`)
+        }
+      };
+
+      let p1 = new client("gemy")
+
+      p1.details()
+
+
+
+      function Proto(){
+        this.name = name;
+      }
+
+      let pro = new Proto("ahmed")
+      console.log(pro)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="product-input" />
+    <button class="product-btn">add T0 Cart</button>
+    <div class="product-content"></div>
+
+    <script>
+      let product_btn = document.querySelector(".product-btn");
+      // let product_input = document.querySelector(".product-input")
+      let product_content = document.querySelector(".product-content");
+
+      let data = [
+        { id: 1, name: "ahmed", desc: "love programing" },
+        { id: 2, name: "gemy", desc: "love programing" },
+        { id: 3, name: "gamgoom", desc: "love programing" },
+        { id: 4, name: "geee", desc: "love programing" },
+      ];
+
+      // console.log(data)
+
+      function DrawUi(items) {
+        // console.log(items)
+        product_content.innerHTML = ""
+        items.forEach(function (ele) {
+          // console.log(ele)
+          // product_content.innerHTML += '<div>'+ ele.name + '</div>'
+          product_content.innerHTML += `
+                <div onclick = 'deleteItem(${ele.id})'>
+                ${ele.name}
+                <br>
+                </div>
+                `;
+        });
+      }
+
+      window.onload = function () {
+        DrawUi(data);
+      };
+
+      // product_btn.addEventListener("click" , function(){
+      //   let product_input = document.querySelector(".product-input")
+      //   if(product_input.value === ""){
+      //     alert("this is empty")
+      //   }else{
+      //     let lastId = data[data.length-1].id
+      //     data.push({ id : ++lastId , name: product_input.value})
+      //   }
+      //   console.log(data)
+      // })
+
+      product_btn.addEventListener("click", function (e) {
+        let product_input = document.querySelector(".product-input");
+
+        if (product_input.value === "") {
+          alert("this is empty");
+        } else {
+          let lastId = data.length ? data[data.length - 1].id : 0;
+          // console.log(lastId)
+          data.push({
+            id: ++lastId,
+            name: product_input.value,
+            desc: "love programing",
+          });
+          console.log(data);
+          let addedItem = data[data.length - 1];
+          product_content.innerHTML += `
+                <div onclick = 'deleteItem(${addedItem.id})'>
+                ${addedItem.name}
+                <br>
+                </div>
+                `;
+          product_input.value = "";
+        }
+      });
+
+      function deleteItem(id) {
+        // console.log(id);
+        let index = data.map(function(i){
+          return i.id
+        }).indexOf(id)
+        if(index !== -1){
+          data.splice(index , 1)
+          DrawUi(data)
+        }
+      }
+
+    
+
+      // function edit (e){
+      //   if(e.target === ){
+
+      //   }
+      // }
+
+      // product_content.onclick = function(e){
+      //   if(e.target === product_content){
+
+      //   }
+      // }
+
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      // function loadData() {
+      //   let xttp = new XMLHttpRequest();
+      //   // console.log(xttp)
+
+      //   xttp.onreadystatechange = function () {
+      //     console.log(this.readyState);
+      //   };
+
+      //   xttp.open("GET" , "https://jsonplaceholder.typicode.com/posts" , true);
+      //   xttp.send()
+      // }
+
+      // loadData();
+
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      // function loadData() {
+      //   let xhttp = new XMLHttpRequest();
+      //   // console.log(xhttp);
+
+      //   xhttp.onreadystatechange = function () {
+      //     // console.log(this.readyState);
+
+      //     if(this.readyState === 4 & this.status === 200){
+      //       console.log(JSON.parse(this.responseText) )
+      //     }
+      //   };
+
+      //   xhttp.open("GET" , "https://jsonplaceholder.typicode.com/posts" , true);
+      //   xhttp.send();
+      // }
+
+      // loadData();
+      // onreadystatechange();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p>yarab-1</p>
+      <p>yarab-2</p>
+      <p>yarab-3</p>
+      <p>yarab-4</p>
+    </div>
+    <div>
+      <a
+        class="link-1"
+        title="ahmed-link"
+        id="gemy"
+        href="https://twitter.com"
+        target="_blank"
+        >link</a
+      >
+    </div>
+
+    <script>
+      let mytagP = document.getElementsByTagName("p");
+
+      let link1 = document.querySelector(".link-1");
+
+      link1.setAttribute("href", "https://facebook.com");
+
+      if (link1.hasAttribute("title")) {
+        link1.setAttribute("title", "ahmed");
+      } else {
+        console.log("not found");
+      }
+
+      // console.log(mytagP)
+      // console.log(mytagP[1])
+      mytagP[0].innerHTML = "yarab yarab-1";
+      mytagP[0].style.color = "red";
+
+      mytagP[1].innerHTML = "yarab yarab-2";
+      mytagP[1].style.color = "blue";
+
+      mytagP[2].innerHTML = "yarab yarab-3";
+      mytagP[2].style.color = "yellow";
+
+      mytagP[3].innerHTML = "yarab yarab-4";
+      mytagP[3].style.color = "green";
+
+      // for (let i = 0; i <= 100; i++) {
+      //   let myElement = document.createElement("div");
+      //   let mytext = document.createTextNode("welcome to js pure" + "//" + [i]);
+      //   let myp = document.createElement("p");
+      //   let mytexth3 = document.createTextNode(
+      //     "welcome to js pure in h3" + "//" + [i]
+      //   );
+      //   let myh3 = document.createElement("h3");
+
+      //   myElement.className = "div-one";
+      //   myp.appendChild(mytext);
+      //   myElement.appendChild(myp);
+      //   myElement.appendChild(myh3);
+
+      //   myh3.appendChild(mytexth3);
+
+      //   document.body.appendChild(myElement.cloneNode(true));
+      // }
+
+      let myElement = document.createElement("div");
+      let myp = document.createElement("p");
+      let mytextp = document.createTextNode("hello my dear ahmed gamal");
+      let mytexth3 = document.createTextNode("ahmed gemy");
+      let myH3 = document.createElement("h3");
+
+      myElement.className = "div-one";
+      myp.appendChild(mytextp);
+      myH3.appendChild(mytexth3);
+      myElement.appendChild(myH3);
+      myElement.appendChild(myp);
+
+      for (let i = 0; i <= 10; i++) {
+        document.body.appendChild(myElement.cloneNode(true));
+      }
+
+      // console.log(myp)
+    </script>
+
+    <a href="https://www.google.com">Google</a>
+    <form action="">
+      <input type="text" name="username" placeholder="max 10 chars only" />
+      <input type="text" name="age" placeholder="cant be empty" />
+      <input type="submit" value="submit Data" />
+    </form>
+
+
+    <form action="">
+      <input class="input-test" type="text">
+      <input type="submit" value="submit">
+    </form>
+    <div>
+      <h2 class="h2-input"></h2>
+    </div>
+
+    <script>
+      document.links[1].onclick = function (e) {
+        console.log(e);
+        e.preventDefault();
+      };
+
+      let userName = document.querySelector("[name ='username']");
+      let age = document.querySelector("[name ='age']");
+      console.log(userName);
+      console.log(age);
+
+      document.forms[0].onsubmit = (e) => {
+        let userValid = false;
+        let ageValid = false;
+
+        console.log(userName.value)
+        console.log(userName.value.length)
+
+        if(userName.value !== "" & userName.value.length <= 10){
+          // console.log("valid")
+          userValid = true
+        }
+
+        if(age.value !== ""){
+          // console.log("valid")
+          ageValid = true
+        }
+
+        if (userValid === false || ageValid === false) {
+          e.preventDefault();
+        }
+      };
+
+
+      let inputTest = document.querySelector(".input-test")
+      let h2Input = document.querySelector(".h2-input")
+
+      inputTest.onkeyup = function(){
+        h2Input.innerHTML = inputTest.value
+      }
+
+      
+    </script>
+
+    <script src="./js/main3.js"></script>
+  </body>
+</html>

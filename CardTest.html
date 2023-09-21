@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="list">
+        <li price="30">Keyboard</li>
+        <li price="20">mouse</li>
+        <li price="50">Lap</li>
+    </ul>
+
+    <div id="content"></div>
+
+    <button id="addToCart" style="display: none;">Show Total Price</button>
+
+    <br>
+
+    <div class="Demo"></div>
+
+    <script>
+        let Allitems = document.querySelectorAll(".list li")
+        let content = document.querySelector("#content")
+        let btn = document.querySelector("#addToCart")
+
+        let totalPrice = 0;
+
+        Allitems.forEach(  (item) => {
+            item.onclick = () => {
+                totalPrice += parseInt(item.getAttribute("price"))
+
+                content.innerHTML += item.textContent + ` <br> `
+                if(content.innerHTML != ""){
+                    btn.style.display = "block"
+                }
+            }
+        } )
+
+        btn.onclick = () => {
+            console.log(totalPrice)
+        }
+
+        // ^^^^^^^^^^^^^^^^^^^^
+
+        let obj = [
+            {
+                name : "ahmed",
+                age : 28,
+                tel : 12345
+            },
+            {
+                name : "gamal",
+                age : 29,
+                tel : 1234
+            }
+        ]
+
+        let str = JSON.stringify(obj)
+
+        let ob = JSON.parse(str)
+
+        console.log(str)
+        console.log(ob)
+        document.querySelector(".Demo").innerHTML = str
+    </script>
+
+    <script src="./js/main3.js"></script>
+</body>
+</html>
